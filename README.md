@@ -1,7 +1,7 @@
 # oTree
 There are some oTree codes for one treatment in the social exclusion experiment of my colleagues and me.
 
-Otree is a software platform for economics experiments, mainly based on python (also includes HTML, Javascripts...)
+oTree is a software platform for economics experiments, mainly based on python (also includes HTML, Javascripts...)
 
 The two folders are two steps in the treatment separately. 
 
