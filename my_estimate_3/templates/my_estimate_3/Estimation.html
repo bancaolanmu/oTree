@@ -1,0 +1,55 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Questions
+{% endblock %}
+
+{% block content %}
+    <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var doUpdate = function() {
+                $('.countdown').each(function() {
+                  var count = parseInt($(this).html());
+
+                  if (count < 1) {
+                    $(this).css('color', 'red');
+                  }
+
+                  $(this).html(count - 1);
+                });
+            };
+            setInterval(doUpdate, 1000);
+        });
+    </script>
+    <link rel="stylesheet" type="text/css" href="{% static 'global/matrix.css' %}"/>
+
+    <div id="timer" style="border-radius: 2px; background-color: #fff3cd; padding: 10px 10px 25px 10px; margin: 5px; border: 1px solid #f5e79e; font: 16px arial; color: #856404;">
+        Time left to complete this page:  <strong class="countdown">210</strong> s.
+    </div>
+
+    <p>Before proceeding to the next task, we would like you to answer some questions. </p>
+    <p>
+        Q1. How many problems do you think you have solved correctly during the previous 3 minutes?
+        {% formfield player.absolute_r with label="" %}
+    </p>
+    <br>
+    <p>
+        For the following question (Q2), you can earn an additional 1.25 points.
+        If your answer to a question is correct, you will receive 1.25 points.
+        For each difference between your answer and the correct answer, 0.25 points is deducted.
+        Your additional earnings will be zero if the difference is five or more.
+    </p>
+    <p>
+        Q2. There are {{player.n}} other participants who solved the same problems in the previous round.
+        How many of these {{player.n}} participants do you think solved more problems correctly than you in the previous round?
+        {% formfield player.relative_r with label="" %}
+    </p>
+    <p>
+        Click “Next” to submit your answers and proceed to Task 2.
+    </p>
+
+
+{% next_button %}
+{% endblock %}
